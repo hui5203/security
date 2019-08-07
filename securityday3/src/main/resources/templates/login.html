@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
+</head>
+<body>
+<div class="container">
+    <div th:if="${param.error}">
+        用户名密码错误，要不去<a th:href="@{/}">首页</a>看看？
+    </div>
+    <div th:if="${param.logout}">
+        您已经登出
+    </div>
+    <form class="form-signin" method="post" th:action="@{/login}"> <!--post是必须要有的，action对应的是collection中的GetMapping（“/login”）-->
+        <h2 class="form-signin-heading">security one</h2>
+        <p>
+            <label for="username" class="sr-only">用户名：</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+        </p>
+        <p>
+            <label for="password" class="sr-only">密码：</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+        </p>
+        <p>
+            <!-- 新增图形验证码的输入框 -->
+            <input type="text" name="captcha" placeholder="captcha" />
+            <img src="/captcha.jpg" alt="captcha" height="50px"
+                 width="150px" style="margin-left: 20px;">
+        </p>
+        <input name="_csrf" type="hidden" value="528891fa-60be-4da1-8980-0c2e9e027373" />
+        <button class="btn btn-lg btn-primary btn-block" type="submit" >登录</button>
+    </form>
+</div>
+</body>
+</html>

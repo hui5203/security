@@ -1,0 +1,22 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: c6e64420384c71f27291
+            client-secret: dd7e0d3711bc5e3cc5ddc604cc54d57de9cf7333
+          tdf:
+            client-id: tdfOauth2SSO213
+            client-secret: 123456
+            provider: tdf
+            client-name: 太极统一认证
+            authorization-grant-type: authorization_code
+            redirect-uri-template: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          tdf:
+            authorization-uri: http://192.168.99.77:9998/oauth/authorize
+            token-uri: http://192.168.99.77:9998/oauth/token
+            user-info-uri: http://192.168.99.77:9998/me
+            user-name-attribute: "name"
+            wk-set-uri: http://192.168.99.77:9998/.well-known/jwks.json
